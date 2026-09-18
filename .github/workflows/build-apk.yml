@@ -1,0 +1,23 @@
+name: Build Flutter Android APK
+
+on:
+  push:
+    paths:
+      - 'frontend_flutter/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build APK in Docker (Flutter + Android toolchain)
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace cirrusci/flutter:stable bash -lc "cd frontend_flutter && if [ ! -d android ]; then flutter create . --platforms=android; fi && flutter pub get && flutter build apk --release"
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: frontend_flutter/build/app/outputs/flutter-apk/app-release.apk

@@ -1,0 +1,36 @@
+name: healthage_app
+description: HealthAge mobile app UI for Android and iOS.
+publish_to: 'none'
+version: 0.1.0+1
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.13.6
+  flutter_local_notifications: ^18.0.1
+  firebase_core: ^2.14.0
+  firebase_messaging: ^14.5.0
+  web_socket_channel: ^2.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.11.0
+  integration_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/logo.png
+
+flutter_icons:
+  android: true
+  ios: false
+  image_path: "assets/logo.png"
+  adaptive_icon:
+    foreground_image: "assets/logo.png"
+    background_color: "#FFFFFF"

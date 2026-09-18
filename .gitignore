@@ -1,0 +1,26 @@
+# Flutter SDKs and downloaded archives
+flutter_sdk/
+flutter_new/
+flutter_sdk.zip
+flutter_windows.zip
+
+# Flutter and Android generated files
+**/node_modules/
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/build/
+**/android/.gradle/
+**/android/local.properties
+
+# Local backend data and secrets
+backend/data/healthage.json
+**/.env
+
+# IDE and OS files
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db

@@ -1,0 +1,14 @@
+.dart_tool/
+.packages
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-plugins-dependencies
+.dart_tool/
+**/android/**/gradle-wrapper.jar
+android/key.properties
+android/*.jks
+**/ios/Pods/
+**/ios/Runner.xcworkspace/
+pubspec.lock
