@@ -197,6 +197,8 @@ class MedicalHistoryEntry {
 }
 
 class AppState extends ChangeNotifier {
+  bool _backgroundServicesStarted = false;
+
   AppState._internal() {
     _users.addAll([
       const UserProfile(id: 1, name: 'Dr. Ada Okafor', email: 'ada@healthage.com', password: 'demo123', role: 'Practitioner', userCode: 'AO-001'),
@@ -205,7 +207,11 @@ class AppState extends ChangeNotifier {
       const UserProfile(id: 4, name: 'Parent Jenna', email: 'jenna@healthage.com', password: 'demo123', role: 'Parent', userCode: 'JE-004'),
       const UserProfile(id: 5, name: 'Patient Daniel', email: 'daniel@healthage.com', password: 'demo123', role: 'Patient', userCode: 'DA-005'),
     ]);
-    // start messaging registration
+  }
+
+  void startBackgroundServices() {
+    if (_backgroundServicesStarted) return;
+    _backgroundServicesStarted = true;
     _initMessaging();
   }
 
@@ -548,6 +554,7 @@ class AppState extends ChangeNotifier {
     _lastError = null;
     _registerUserOnServer();
     loadServerPractitioners();
+    startBackgroundServices();
     _registerWebSocket();
     notifyListeners();
     return true;
@@ -572,6 +579,7 @@ class AppState extends ChangeNotifier {
     _lastError = null;
     _identifyUserOnServer();
     loadServerPractitioners();
+    startBackgroundServices();
     _registerWebSocket();
     notifyListeners();
     return true;

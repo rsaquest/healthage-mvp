@@ -11,31 +11,23 @@ import 'package:healthage_app/screens/admin_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  testWidgets('App starts and shows the new validation marketing screen', (WidgetTester tester) async {
+  testWidgets('App starts on the login screen', (WidgetTester tester) async {
     await tester.pumpWidget(const HealthAge());
 
-    expect(find.text('Validation & Social Proof'), findsOneWidget);
+    expect(find.text('HealthAge MVP'), findsOneWidget);
+    expect(find.text('Sign In'), findsOneWidget);
   });
 
-  testWidgets('Tapping Patient role opens AuthScreen with role hint', (WidgetTester tester) async {
-    tester.binding.window.physicalSizeTestValue = const Size(1080, 1920);
-    tester.binding.window.devicePixelRatioTestValue = 1.0;
-    addTearDown(() {
-      tester.binding.window.clearPhysicalSizeTestValue();
-      tester.binding.window.clearDevicePixelRatioTestValue();
-    });
-
+  testWidgets('Selecting a role keeps the login form visible', (WidgetTester tester) async {
     await tester.pumpWidget(const HealthAge());
 
-    final patientFinder = find.text('Continue as Patient / Family');
-    expect(patientFinder, findsOneWidget);
-    await tester.ensureVisible(patientFinder);
-    await tester.pumpAndSettle();
-    await tester.tap(patientFinder);
-    await tester.pumpAndSettle();
+    final adminRole = find.text('Admin');
+    await tester.ensureVisible(adminRole);
+    await tester.tap(adminRole);
+    await tester.pump();
 
-    expect(find.textContaining('required role'), findsOneWidget);
-    expect(find.text('HealthAge MVP'), findsWidgets);
+    expect(find.text('Admin: maya@healthage.com / demo123'), findsOneWidget);
+    expect(find.text('Sign In'), findsOneWidget);
   });
 
   testWidgets('Admin dashboard displays defense metrics', (WidgetTester tester) async {

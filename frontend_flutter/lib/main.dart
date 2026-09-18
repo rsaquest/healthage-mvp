@@ -9,7 +9,6 @@ import 'screens/telehealth_screen.dart';
 import 'screens/map_tracking_screen.dart';
 import 'screens/medication_screen.dart';
 import 'screens/chat_screen.dart';
-import 'screens/welcome_screen.dart';
 import 'screens/admin_screen.dart';
 import 'screens/recipient_invites_screen.dart';
 import 'screens/practitioner_home_screen.dart';
@@ -41,9 +40,8 @@ class HealthAge extends StatelessWidget {
           ),
         ),
       ),
-      home: const WelcomeScreen(),
+      home: const AuthScreen(),
       routes: {
-        '/welcome': (_) => const WelcomeScreen(),
         '/auth': (_) => const AuthScreen(),
         '/invites': (_) => const RecipientInvitesScreen(),
         '/main': (_) => const MainNavigation(),
